@@ -7,14 +7,14 @@ Live demo
 
 demo http://libikun.sinaapp.com/
 
-Usage
+user        
 一
-import css 里面的 loadeMore 插件   webpack 最好 有less 编译 也可以自己 编译后加入
+          import css 里面的 loadeMore 插件   webpack 最好 有less 编译 也可以自己 编译后加入
 
 
 二
 
-import Tloader from 'react-touch-loader';
+import Tloader from '*/loadeMore';
 
 refresh(resolve, reject){
 }
