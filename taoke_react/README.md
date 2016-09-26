@@ -17,12 +17,12 @@ user
 import Tloader from '*/loadeMore';
 
 refresh(resolve, reject){
+//do
 }
 loadMore(resolve){
+//do
 }	 
-2个人方法 在 下拉刷新   和 touch pull down 是 触发
-
-具体查看 components  下面的 loardMore.js
+2个方法 在 下拉刷新   和 向上拉取 时 触发
 <Tloader
     initializing={initializing}
      canPullUpAddMore:{canPullUpAddMore}, 
@@ -32,5 +32,7 @@ loadMore(resolve){
     className="some class">
     <ul><li>some items</li></ul>
 </Tloader>
+具体使用查看 components   下面的 loardMore.js
+
 
 
