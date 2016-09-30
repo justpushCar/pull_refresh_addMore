@@ -340,9 +340,9 @@ body {
   border-radius: 0.2rem;
   -moz-border-radius: 0.2rem;
   -webkit-border-radius: 0.2rem;
-  box-shadow: 0.05rem 0.07rem 0.2rem #ccc;
-  -moz-box-shadow: 0.05rem 0.07rem 0.2rem #ccc;
-  -webkit-box-shadow: 0.05rem 0.07rem 0.2rem #ccc;
+  box-shadow: 0.05rem 0.07rem 0.2rem #cccccc;
+  -moz-box-shadow: 0.05rem 0.07rem 0.2rem #cccccc;
+  -webkit-box-shadow: 0.05rem 0.07rem 0.2rem #cccccc;
 }
 .content .wrap .wrap1 {
   height: 3.1rem;
@@ -400,9 +400,11 @@ body {
 }
 .content .wrap .wrap2 .time {
   float: left;
+  font-size: 0.56rem;
 }
 .content .wrap .wrap2 .location {
   float: right;
+  font-size: 0.56rem;
 }
 .fix_head_left {
   width: 12rem;
@@ -479,9 +481,9 @@ body {
   -moz-border-radius: 0.2rem;
   -webkit-border-radius: 0.2rem;
   border: solid #ccc 1px;
-  box-shadow: 0.05rem 0.05rem 0.05rem 1px #ccc;
-  -moz-box-shadow: 0.05rem 0.05rem 0.05rem 1px #ccc;
-  -webkit-box-shadow: 0.05rem 0.05rem 0.05rem 1px #ccc;
+  box-shadow: 0.05rem 0.05rem 0.05rem 1px #cccccc;
+  -moz-box-shadow: 0.05rem 0.05rem 0.05rem 1px #cccccc;
+  -webkit-box-shadow: 0.05rem 0.05rem 0.05rem 1px #cccccc;
   font-size: 0.7rem;
   margin-left: 0.4rem;
   vertical-align: 0.4rem;
@@ -502,7 +504,47 @@ body {
   float: left;
   margin-left: 2rem;
   text-align: center;
-  box-shadow: 0.15rem 0.15rem 0.1rem 1px #ccc;
-  -moz-box-shadow: 0.15rem 0.15rem 0.1rem 1px #ccc;
-  -webkit-box-shadow: 0.15rem 0.15rem 0.1rem 1px #ccc;
+  box-shadow: 0.15rem 0.15rem 0.1rem 1px #cccccc;
+  -moz-box-shadow: 0.15rem 0.15rem 0.1rem 1px #cccccc;
+  -webkit-box-shadow: 0.15rem 0.15rem 0.1rem 1px #cccccc;
+}
+.allgame {
+  width: 16rem;
+  height: 100%;
+}
+.allgame .zz {
+  text-align: center;
+  height: 2rem;
+  font-size: 1rem;
+  margin: auto;
+  margin-top: 2rem;
+}
+.allgame .lungang {
+  position: fixed;
+  top: 3rem;
+  left: 0.5rem;
+  width: 4rem;
+  height: 4rem;
+  background: #EEEEEE;
+  border-radius: 50%;
+  border: solid #ccc 1px;
+}
+.allgame .lungang .kzq {
+  position: absolute;
+  left: 1.5rem;
+  top: 1.5rem;
+  width: 1rem;
+  height: 1rem;
+  background: black;
+  border-radius: 50%;
+}
+.gongji {
+  height: 1.5rem;
+  width: 1.5rem;
+  position: fixed;
+  bottom: 1.4rem;
+  right: 1.4rem;
+  background: #666;
+  border-radius: 50%;
+  z-index: 1000 ;
 }

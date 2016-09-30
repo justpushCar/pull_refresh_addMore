@@ -13,9 +13,9 @@ class Commonfoot extends Component {
     return (
          <div className="fix_foot" >
            <div className="l">
-               <Link to="/login">
+               <Link to="/game">
 	           <div><i className="fa fa-star fa-2x"></i></div>
-	           <div className="text">英雄榜</div>
+	           <div className="text">小游戏</div>
 	           </Link>
            </div>
            <div className="m">
