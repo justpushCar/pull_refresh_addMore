@@ -8,7 +8,6 @@ const STATS = {
     refreshing: 'refreshing',
     refreshed: 'refreshed',
     reset: 'reset',
-
     loading: 'loading'// loading more
     
 };

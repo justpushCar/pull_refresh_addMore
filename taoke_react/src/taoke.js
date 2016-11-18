@@ -1,11 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component ,cloneElement } from 'react';
 //import LoginInput from './components/login_input';
 //import HomeContent from './components/homeContent';
 import  CommonHead from './components/commonHead';
 import CommonFoot from './components/commonFoot';
 import Loadermore from './components/loaderMore';
 import HeadLeft from   './components/headLeft';
-class Taoke extends Component {
+import * as actions from './action'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+ class Taoke extends Component {
   constructor(props){
      super();
      this.state={
@@ -24,6 +27,7 @@ class Taoke extends Component {
    }
 
   onTouchStart(e){
+  	 e.stopPropagation()
   	if(this.state.distenx>=11*this.one_rem){
   		this.setState({ distenx:this.state.distenx})
   	}else{
@@ -67,6 +71,13 @@ class Taoke extends Component {
   	 this.setState({ distenx:12*this.one_rem})
   }
   render() {
+     
+    const childrenWithProps = React.Children.map(this.props.children,
+        (child) => cloneElement(child, {
+          actions: this.props.actions,
+          login_date: this.props.login_date
+        })
+        )
 
     return (
     	<div className="alltent"
@@ -74,11 +85,21 @@ class Taoke extends Component {
       onTouchMove={this.touchMove}
       onTouchEnd={this.touchEnd}>
     	 <CommonHead  headimg_click={this.headimg_click}  head={{title:"主页",headimg:"http://1.libikun.applinzi.com/Public/img/nan.png"}}/>
-    	 <Loadermore/>
+         {childrenWithProps}
     	 <HeadLeft distenx={this.state.distenx} one_rem={this.one_rem} />
          <CommonFoot/>
     	</div> 
     );
   }
 }
-export default Taoke;
+ 
+ const mapDispatchToProps = dispatch => ({
+    actions: bindActionCreators(actions, dispatch)
+})
+
+const mapStateToProps = state => {
+	 const{login}=state
+   return login
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Taoke)
+ 

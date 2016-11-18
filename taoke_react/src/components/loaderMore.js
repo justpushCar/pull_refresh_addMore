@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Tloader from '../css/loaderMore/touch_ref_addmore';
+import Tloader from './loaderMore/touch_ref_addmore';
 class Loadermore extends Component {
 	 constructor(prop){
 	 	 super();
