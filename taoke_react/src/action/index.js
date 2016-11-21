@@ -22,6 +22,9 @@ export const dologin= (obj)=>(dispatch) => {
 			   
 			).then(	
 				data=>{
+					if(data.status==1){
+						sessionStorage.setItem("is_login", true);
+					}
 					return  dispatch(relogin(LOGIN,data))
 					}
 			)

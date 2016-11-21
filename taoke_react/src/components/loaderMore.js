@@ -4,12 +4,13 @@ class Loadermore extends Component {
 	 constructor(prop){
 	 	 super();
 	 	 this.state={
+	 	 	page : 1, //页数
 	 	 	//确定是否可以刷新
 	 	 	canRefreshResolve:1,
             canPullUpAddMore:true, //是否开启下拉刷新
-            hasMore:0,            
+            hasMore:1,    //是否还有数据        
            // initializing:1,   
-           conter:[]
+           conter:[] //存放数据
            }
 			//	 	 initializing
 			//
@@ -23,17 +24,16 @@ class Loadermore extends Component {
 	 	 
 	 }
 	 refresh(resolve, reject){
-	
-
 	 	// if(this.state.canRefreshResolve) return reject();
-       this.getjsonlist= fetch(this.jsonlist_url)
+       this.getjsonlist= fetch(this.jsonlist_url+`?page=1`)
        this.getjsonlist.then(
 		   		response=>response.json()
 		     ).then(
 		     	data=>{
-		     		this.setState({conter:data});
+		     		this.setState({conter:data.data,page:1});
 		     		resolve()
 		     		reject();
+		     		
 		     	}
 		    )
 		 
@@ -42,15 +42,18 @@ class Loadermore extends Component {
 	 
 	 loadMore(resolve){
 	 	let datas=this.state.conter
-	 	fetch(this.jsonlist_url)
+	 	fetch(this.jsonlist_url+`?page=${this.state.page}`)
 	        .then(
 		   		response=>response.json()
 		     ).then(
 		     	data=>{
 		     		
-		     		datas=datas.concat(data)
-		     		console.log(datas);
-		     		this.setState({conter:datas,  hasMore:true});
+		     		let pages=data.pages
+		     		
+		     		if(this.state.page<pages){
+		     			datas=datas.concat(data.data)
+		     		  this.setState({conter:datas,  hasMore:true,page:this.state.page+1});
+		     		}else this.setState({conter:datas,hasMore:false,canRefreshResolve:0,});
 		     		resolve();
 		     	}
 		    )
@@ -62,23 +65,23 @@ class Loadermore extends Component {
 		   		response=>response.json()
 		     ).then(
 		     	data=>{
-		     		this.setState({conter:data,hasMore: 1});
+		     		this.setState({conter:data.data,hasMore: 1});
 		     	}
 		    )
 		 // window.addEventListener('scroll', this.handleScroll.bind(this))
 		// this.rem_px=window.screen.width/16
 		 
 	 }
-	handleScroll(){
-		 var s= document.body.scrollTop
-	      if(s>this.rem_px*6){
-	      	this.setState({canRefreshResolve:0});
-	      	console.log(this.state.canRefreshResolve)
-	      }else{
-	      	this.setState({canRefreshResolve:1});
-	      	console.log(this.state.canRefreshResolve)
-	      }
-	}
+//	handleScroll(){
+//		 var s= document.body.scrollTop
+//	      if(s>this.rem_px*6){
+//	      	this.setState({canRefreshResolve:0});
+//	      	console.log(this.state.canRefreshResolve)
+//	      }else{
+//	      	this.setState({canRefreshResolve:1});
+//	      	console.log(this.state.canRefreshResolve)
+//	      }
+//	}
   render() {
      var {  hasMore, initializing, refreshedAt, canRefreshResolve,canPullUpAddMore } = this.state;
         var { refresh, loadMore, toggleCanReresh } = this;
@@ -92,23 +95,46 @@ class Loadermore extends Component {
         }else{
   		 this.contentdiv=this.state.conter.map(
 		 	(value,index)=>{
+		 		 var nowtime=(new Date()).valueOf();
+
+                        var timestamp2 = Date.parse(new Date(value.created_time.replace(/-/g,"/"))) ;
+                        var timecha=nowtime-timestamp2;
+                        var leave1=timecha%(24*3600*1000)    //计算天数后剩余的毫秒数
+                        var day=Math.floor(timecha/(24*3600*1000))  
+                        var lev =timecha/(3600*1000)
+                        var hours=Math.floor( lev)
+                        var leave2=leave1%(3600*1000);
+                        var xiaoshi=Math.floor((timecha/(3600*1000))%24)
+                        
+                        var minutes=Math.floor(leave2/(60*1000))
+                        timestamp2 = timestamp2 / 1000;
+                        let img=""
+                         if(value.headimgurl){
+                            img= value.headimgurl;
+                        }else {
+                            if(value.sex=='男'){
+                            img="http://1.libikun.applinzi.com/Public/img/nan.png";
+                            }else{
+                                img="http://1.libikun.applinzi.com/Public/img/nv.png";
+                            }
+                        }
+		 		
 		 		return	<div className="content" key={index}>
 					 	 <div className="wrap">
 					           <div className="wrap1">
 					           		<div className="title">{value.kecheng}/{value.created_time}</div>
-					           		<div className="head_img"><img alt="头像" src={"http://1.libikun.applinzi.com/Public/img/nv.png"} /></div> 
+					           		<div className="head_img"><img alt="头像" src={img} /></div> 
 					                <div className="clboth" ></div>
 					                <div className="bao">报酬</div>
 					                <div className="baochou_content">{value.huibao}</div>
 					           </div>
 					           <div className="wrap2">
-					                <div className="time">1小时0分钟前</div>
+					                <div className="time">{day}天{xiaoshi}小时{minutes}分钟前</div>
 					                <div className="location">{value.dizhi} {value.school}</div> 
 					           </div>
 					    </div>
 					   </div>
 		 	}
-	 	
 	      )
   		}
         return (

@@ -14,7 +14,8 @@ class HomeContent extends Component {
 		   		response=>response.json()
 		     ).then(
 		     	data=>{
-		     		this.setState({conter:data});
+		     		console.log(data.data)
+		     		this.setState({conter:data.data});
 		     	}
 		    )
    }

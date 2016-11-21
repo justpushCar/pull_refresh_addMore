@@ -59,10 +59,10 @@ export default React.createClass({
 
    ScrollAddMore(){
        
-          var t_panelhight = this.refs.panel.offsetHeight; //in_div
+          var t_panelhight = this.refs.panel.offsetHeight; //div  内容高度
           var T_scrollTop = document.body.scrollTop;
           var shuould_add_more= Math.abs(T_scrollTop+this.T_screenh-t_panelhight)       
-             if(shuould_add_more<70 && this.state.canLoad){
+             if(shuould_add_more<150 && this.state.canLoad){
                 this.setState({canLoad:false})
                 this.loadMore()
              }
@@ -77,13 +77,14 @@ export default React.createClass({
 
     },
     touchMove(e) {
+    	
         if(!this.canRefresh()) return;
         var scrollTop = this.refs.panel.scrollTop; //in_div
           //需要判断滚动的元素 是否在 div里面 并且设置 overflow auto
         var scrollTop = document.body.scrollTop;
         //这个 滚动条就是 屏幕本身的scroll
 
-     
+       this.ScrollAddMore()
         var distance = this.calculateDistance(e.touches[0]);
 
         if(distance > 0 && scrollTop <= 0){
@@ -168,7 +169,9 @@ export default React.createClass({
                 <div className="tloader-btn" onClick={this.loadMore}/>
                 <div className="tloader-loading"><i className="ui-loading"/></div>
             </div>
-        ) : null;
+        ) :  <div className="tloader-footer">
+                <div className="foot_not_data">没有更多数据了...</div>
+            </div>;
 
         var style = pullHeight ? {
             WebkitTransform: `translate3d(0,${pullHeight}px,0)`
@@ -186,7 +189,9 @@ export default React.createClass({
                 onTouchStart={this.touchStart}
                 onTouchMove={this.touchMove}
                 onTouchEnd={this.touchEnd}
-                onAnimationEnd={this.animationEnd}>
+                onAnimationEnd={this.animationEnd}
+              
+            >
 
                 <div className="tloader-symbol">
                     <div className="tloader-msg"><i/></div>

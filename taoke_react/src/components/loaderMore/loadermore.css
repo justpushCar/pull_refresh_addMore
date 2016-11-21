@@ -1,6 +1,7 @@
 .tloader-msg:after {
   content: '下拉刷新';
 }
+.foot_not_data{text-align: center;margin: auto;}
 .state-pulling.enough .tloader-msg:after {
   content: '松开刷新';
 }
