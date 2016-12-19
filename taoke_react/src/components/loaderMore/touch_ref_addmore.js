@@ -1,6 +1,5 @@
 import React from 'react';
-import './loadermore.less';
-
+import './loadermore.css';
 const STATS = {
     init: '',
     pulling: 'pulling',
@@ -9,9 +8,7 @@ const STATS = {
     refreshed: 'refreshed',
     reset: 'reset',
     loading: 'loading'// loading more
-    
 };
-
 // pull to refresh
 // tap bottom to load more
 export default React.createClass({

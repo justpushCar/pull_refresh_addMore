@@ -1,4 +1,4 @@
-export const BASIC_URL = 'http://libikun.sinaapp.com/index.php/'
+export const BASIC_URL = 'http://sanguojiamen.applinzi.com/index.php/'
 export const LOGIN = 'LOGIN'
 var json=''
    const relogin = (type, json) => {

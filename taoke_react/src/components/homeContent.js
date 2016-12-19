@@ -9,7 +9,7 @@ class HomeContent extends Component {
     
 	 
    componentDidMount(){
-	   	fetch("http://1.libikun.applinzi.com/index.php/Index/indexJson.html")
+	   	fetch("http://sanguojiamen.applinzi.com/index.php/Index/indexJson.html")
 		   	.then(
 		   		response=>response.json()
 		     ).then(
@@ -33,7 +33,7 @@ class HomeContent extends Component {
 					 	 <div className="wrap">
 					           <div className="wrap1">
 					           		<div className="title">{value.kecheng}/{value.created_time}</div>
-					           		<div className="head_img"><img alt="头像" src={"http://1.libikun.applinzi.com/Public/img/nv.png"} /></div> 
+					           		<div className="head_img"><img alt="头像" src={"http://sanguojiamen.applinzi.com/Public/img/nv.png"} /></div> 
 					                <div className="clboth" ></div>
 					                <div className="bao">报酬</div>
 					                <div className="baochou_content">{value.huibao}</div>
