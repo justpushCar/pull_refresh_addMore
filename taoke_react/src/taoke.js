@@ -5,7 +5,7 @@ import  CommonHead from './components/commonHead';
 import CommonFoot from './components/commonFoot';
 import Loadermore from './components/loaderMore';
 import HeadLeft from   './components/headLeft';
-import * as actions from './action'
+import {dologin} from './action'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
  class Taoke extends Component {
@@ -94,7 +94,7 @@ import { bindActionCreators } from 'redux'
 }
  
  const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators(actions, dispatch)
+    actions: bindActionCreators(dologin, dispatch)
 })
 
 const mapStateToProps = state => {
