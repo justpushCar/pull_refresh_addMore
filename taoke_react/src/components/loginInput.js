@@ -16,7 +16,8 @@ class LoginInput extends Component {
   			alert("账号密码不能为空")
   		}else{
 			 this.props.actions.dologin({ body: 'phone='+va1+'&password='+va2})
-  		}   
+  		} 
+  		//http://sanguojiamen.applinzi.com/index.php/Index/register.html
   		
   	}
   render() {
@@ -46,9 +47,10 @@ class LoginInput extends Component {
 			     <label >密码</label>
 			      <input className="input2" ref="input2" type="password"/>
 			    </div>
-			    <Link to="/register">
+			    <a href="http://sanguojiamen.applinzi.com/index.php/Index/register.html" >
 			    <div className="con_butn" >注册</div>
-			    </Link>
+			    </a>
+			   
 			    <div className="con_butn" onTouchStart={()=>this.loginHand()}>登录</div>
 		
 	     </div>

@@ -84,7 +84,7 @@ import { bindActionCreators } from 'redux'
       onTouchStart={this.onTouchStart}      
       onTouchMove={this.touchMove}
       onTouchEnd={this.touchEnd}>
-    	 <CommonHead  headimg_click={this.headimg_click}  head={{title:"主页",headimg:"http://1.libikun.applinzi.com/Public/img/nan.png"}}/>
+    	 <CommonHead  headimg_click={this.headimg_click}  head={{title:"主页",headimg:"http://sanguojiamen.applinzi.com/Public/img/nan.png"}}/>
          {childrenWithProps}
     	 <HeadLeft distenx={this.state.distenx} one_rem={this.one_rem} />
          <CommonFoot/>

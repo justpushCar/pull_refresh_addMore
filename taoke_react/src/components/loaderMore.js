@@ -20,7 +20,7 @@ class Loadermore extends Component {
 			 //方法传给子组件  需要把当前对象传给他
 	 	 this.refresh=this.refresh.bind(this);
 	 	 this.loadMore=this.loadMore.bind(this);
-	 	 this.jsonlist_url="http://1.libikun.applinzi.com/index.php/Index/indexJson.html"
+	 	 this.jsonlist_url="http://sanguojiamen.applinzi.com/index.php/Index/indexJson.html"
 	 	 
 	 }
 	 refresh(resolve, reject){
@@ -113,9 +113,9 @@ class Loadermore extends Component {
                             img= value.headimgurl;
                         }else {
                             if(value.sex=='男'){
-                            img="http://1.libikun.applinzi.com/Public/img/nan.png";
+                            img="http://sanguojiamen.applinzi.com/Public/img/nan.png";
                             }else{
-                                img="http://1.libikun.applinzi.com/Public/img/nv.png";
+                                img="http://sanguojiamen.applinzi.com/Public/img/nv.png";
                             }
                         }
 		 		
@@ -143,7 +143,6 @@ class Loadermore extends Component {
                     <ul>{this.contentdiv}</ul>
                 </Tloader>    
             </div>   
-       
         );
     }
  
